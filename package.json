@@ -1,0 +1,30 @@
+{
+  "name": "projet-perso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ventustyl/Projet-perso.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ventustyl/Projet-perso/issues"
+  },
+  "homepage": "https://github.com/ventustyl/Projet-perso#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20",
+    "validator": "^13.7.0"
+  }
+}
