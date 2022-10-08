@@ -25,6 +25,8 @@ module.exports.checkUser = (req, res, next) => {
     }
 }
 
+
+// Si une authentification est requise
 module.exports.requireAuth = (req, res, next) => {
     const token = req.cookies.jwt;
     if (token) {
