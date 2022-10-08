@@ -71,9 +71,12 @@ userSchema.pre("save", async function(next) {
   next();
 });
 
+
+//On désale le mot de passe lors de l'authentification
 userSchema.statics.login = async function(email, password) {
   const user = await this.findOne({ email });
   if (user) {
+    // Bcrypt compare les deux cryptages
     const auth = await bcrypt.compare(password, user.password);
     if (auth) {
       return user;
