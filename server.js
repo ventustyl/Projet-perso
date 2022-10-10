@@ -9,6 +9,7 @@ const { checkUser, requireAuth } = require('./middleware/auth.middleware.js')
 
 // Appel de routes
 const userRoutes = require('./routes/user.routes.js');
+const postRoutes = require('./routes/post.routes.js');
 
 //Appel de body-parser
 const bodyParser = require('body-parser');
@@ -45,7 +46,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 // routes
 app.use('/api/user', userRoutes);
-
+app.use('/api/post', postRoutes)
 
 
 // Server Ecoute sur le port 5000
