@@ -1,8 +1,13 @@
 const router = require('express').Router();
 
+// Multer sert pour la gestion des uploads
+const multer = require ('multer');
+const upload = multer();
+
 // route des controllers
-const authController = require ('../controllers/auth.controller.js')
-const userController = require ('../controllers/user.controller.js')
+const authController = require ('../controllers/auth.controller.js');
+const userController = require ('../controllers/user.controller.js');
+const uploadController = require ('../controllers/upload.controller.js');
 
 
 // Pour aller sur localhost/api/user/register s'inscrire
@@ -32,6 +37,9 @@ router.patch('/follow/:id', userController.follow);
 // Pour le unfollow avec l'id dans le tableau 
 router.patch('/unfollow/:id', userController.unfollow);
 
+
+// upload
+router.post('/upload',upload.single('file') , uploadController.uploadProfil)
 
 
 module.exports = router;

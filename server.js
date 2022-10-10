@@ -17,13 +17,13 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 
-// -------------------------------------
-// MongoDB
-// Pseudo : Noxy
-// Mot de passe : fcilteam
-// Mongo Atlas
-// mongodb+srv://Noxy:fcilteam@cluster0.zj87sas.mongodb.net/test
-// -------------------------------------
+// ------------------------------------------------------------------//
+// MongoDB                                                           //
+// Pseudo : Noxy                                                     //
+// Mot de passe : fcilteam                                           //
+// Mongo Atlas                                                       //
+// mongodb+srv://Noxy:fcilteam@cluster0.zj87sas.mongodb.net/test     //
+// ------------------------------------------------------------------//
 
 
 // Chemin pour la variable d'environnement
