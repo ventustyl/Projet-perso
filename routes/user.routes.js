@@ -20,10 +20,6 @@ router.get('/logout', authController.logout);
 
 
 
-
-
-
-
 // User DB
 router.get('/', userController.getAllusers);
 // quand dans notre chemin on a un parametre id on prend les infos de l'utalisateur en question
@@ -37,9 +33,7 @@ router.patch('/follow/:id', userController.follow);
 // Pour le unfollow avec l'id dans le tableau 
 router.patch('/unfollow/:id', userController.unfollow);
 
-
 // upload
-router.post('/upload',upload.single('file') , uploadController.uploadProfil)
-
+router.post("/upload", upload.single("file"), uploadController.uploadProfil);
 
 module.exports = router;
