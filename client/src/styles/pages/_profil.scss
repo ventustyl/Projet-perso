@@ -42,6 +42,7 @@
         li {
           cursor: pointer;
           border-radius: 20px;
+          margin-top: 40px;
           padding: 10px 20px;
           transition: 0.2s;
 
@@ -81,9 +82,10 @@
         }
       }
       form {
-        input {
+
+        input,label {
           padding: 14px 20px;
-          margin: 0;
+          margin: 10px 0;
           font-size: 1.2rem;
           font-family: $font-2;
           border-radius: 20px;
@@ -95,6 +97,7 @@
         a {
           color: rgb(62, 62, 214);
         }
+  
       }
     }
   }

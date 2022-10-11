@@ -4,7 +4,7 @@ import Home from "../src/pages/Home";
 import Profil from "../src/pages/Profil";
 import Trending from "../src/pages/Trending";
 import Plantation from "./pages/Plantation";
-import "../src/styles/styles.scss";
+import "../src/styles/index.scss";
 
 //Creation de la structure des pages dans un layout avec outlet de react router dom
 const Layout = () => {
