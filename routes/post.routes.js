@@ -1,9 +1,14 @@
 const router = require('express').Router();
 const postController = require('../controllers/post.controller.js')
 
+// Multer sert pour la gestion des uploads
+const multer = require ('multer')
+const upload = multer();
+
+
 //Pour le crud
 router.get('/', postController.readPost);
-router.post('/', postController.createPost);
+router.post('/', upload.single("file"), postController.createPost);
 router.put('/:id', postController.updatePost);
 router.delete('/:id', postController.deletePost);
 

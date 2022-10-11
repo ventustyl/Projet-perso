@@ -2,8 +2,14 @@ const { trusted } = require("mongoose");
 const postModel = require("../models/post.model.js");
 const PostModel = require("../models/post.model.js");
 const UserModel = require("../models/user.model.js");
+const { uploadErrors } = require("../utils/errors.utils.js");
+const fs = require("fs");
+const { promisify } = require("util");
+const pipeline = promisify(require("stream").pipeline);
 const ObjectID = require("mongoose").Types.ObjectId;
 bodyParser = require("body-parser");
+
+
 
 module.exports.readPost = (req, res) => {
   PostModel.find((err, data) => {
@@ -12,10 +18,39 @@ module.exports.readPost = (req, res) => {
     else console.log("L'erreur : " + err);
   }).sort({ createdAt: -1 });
 };
+
+
+
 module.exports.createPost = async (req, res) => {
+let fileName;
+if (req.file !== null) {
+  try {
+    if (
+      req.file.detectedMimeType != "image/jpg" &&
+      req.file.detectedMimeType != "image/png" &&
+      req.file.detectedMimeType != "image/jpeg"
+    )
+      throw Error("invalid file");
+
+    if (req.file.size > 500000) throw Error("max size");
+  } catch (err) {
+    const errors = uploadErrors(err);
+    return res.status(201).json({ errors });
+  }
+  fileName = req.body.posterId + Date.now() + '.jpg';
+  await pipeline(
+    req.file.stream,
+    fs.createWriteStream(
+      `${__dirname}/../client/public/uploads/posts/${fileName}`
+    )
+  );
+}
+
+
   const newPost = new postModel({
     posterId: req.body.posterId,
     message: req.body.message,
+    picture : req.file !== null ? "./uploads/posts" + fileName : "",
     video: req.body.video,
     likers: [],
     comments: [],
@@ -29,6 +64,9 @@ module.exports.createPost = async (req, res) => {
     return res.status(400).send(err);
   }
 };
+
+
+
 module.exports.updatePost = (req, res) => {
   // req.params est l'id passé apres l'URL
   if (!ObjectID.isValid(req.params.id))
@@ -48,6 +86,9 @@ module.exports.updatePost = (req, res) => {
     }
   );
 };
+
+
+
 
 module.exports.deletePost = (req, res) => {
   // req.params est l'id passé apres l'URL

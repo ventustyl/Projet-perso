@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // Multer sert pour la gestion des uploads
-const multer = require ('multer');
+const multer = require ('multer')
 const upload = multer();
 
 // route des controllers
